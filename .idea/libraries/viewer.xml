@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="viewer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/.venv/Lib/site-packages/trimesh/resources/templates/viewer.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

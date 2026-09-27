@@ -1,0 +1,47 @@
+DECLARACIÓN DE USO DE INTELIGENCIA ARTIFICIAL
+CC3501 - Tarea 1 - Mirko Mihovilovic G
+Fecha: 27 de septiembre de 2026
+Herramienta utilizada: ChatGPT / Codex.
+
+Se utilizó asistencia de IA para revisar la solución respecto del enunciado y
+realizar ajustes de organización del código, ubicación de cálculos, representación
+de datos y documentación. En particular, la asistencia comprendió:
+
+1. Corrección de update().
+Trasladar el cálculo de la transformación animada del sol desde on_draw() a
+update(dt), después de actualizar la cámara. on_draw() queda encargado de enviar
+la matriz al shader y dibujar. También se inicializa el estado con update(0.0)
+antes del primer cuadro.
+
+2. Alineación del cálculo de normales con el enunciado.
+Mover la llamada a calculateNormals() desde makeChunks() a
+generateChunkVertices(), que devuelve vértices, índices y normales. Se adapta
+makeChunks() para recibir esos datos y cargarlos en los objetos de GPU.
+
+3. Ubicación y representación de datos.
+Revisar la ubicación de las funciones. Revisar el uso de float32 para las matrices y
+normales, uint32 para los índices y el orden por columnas al enviar matrices a
+OpenGL. Estos puntos incluyen comprobaciones de tipos, además de
+los ajustes realizados durante la integración.
+
+4. Declaración de uso de IA y README.
+Crear una plantilla para la declaración de uso de IA y ayudar a redactar su
+contenido. Se corrigió la referencia al README en pyproject.toml, de README.md
+a README.txt, para coincidir con el archivo incluido y con la recomendación
+de la página 5 del enunciado. La inconsistencia estaba entre la configuración
+del template y el enunciado.
+También se revisaron las instrucciones de ejecución del README.
+
+5. Propuesta del bonus del sol orbital.
+Proponer una órbita que mantenga constante la distancia del sol a la cámara:
+
+    theta = fase_inicial + 2*pi*tiempo/periodo
+    posicion_sol = posicion_camara + distancia*(0, sin(theta), -cos(theta))
+
+El vector de desplazamiento tiene longitud constante por la identidad
+sin(theta)^2 + cos(theta)^2 = 1. Se propone además una rotación alrededor de X
+para orientar el disco hacia la cámara.
+
+La herramienta también ejecutó comprobaciones de geometría, normales, cambios
+de chunk, distancia y periodicidad orbital, orientación y renderizado. Se utilizó
+asistencia para preparar los archivos del proyecto y retirar archivos auxiliares de testeo.
